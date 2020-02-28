@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="script/signup.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/1.0.8/purify.js"></script>
+    <link href="style/style.css" type="text/css" rel="stylesheet">
+    <title>Sign up</title>
+</head>
+<body>
+    <br>
+    <a href=login.html>Log in</a>
+    <form onsubmit="event.preventDefault();signup();">
+        Username:<input type="text" name="username" id="username" required><br>
+        E-mail:<input type="email" name="email" id="email" required><br>
+        Password:<input type="password" name="password" id="pswd" required><br>
+        Re-enter password:<input type="password" name="password2" id="pswd2" required><br>
+        <input type="submit" name="submit">
+    </form>
+</body>
+</html>

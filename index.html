@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="script/script.js" type="text/javascript"></script>
+        <script src="script/login.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/1.0.8/purify.js"></script>
+        <link href="style/style.css" type="text/css" rel="stylesheet">
+        <title>Chrismtas list 2019</title>  
+        <style>
+            h1{
+                position:fixed;
+                font-size: 3em;
+                top:4%;
+                left:25%;
+            }
+            body > table{
+                width: 80%;
+                position: fixed;
+                left: 10%;
+                top: 30%
+            }
+
+            table{
+                border-collapse: collapse;
+            }
+            table.list{
+                width:100%;
+            }
+
+            td, th {
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even),table.list thead>tr {
+                background-color:maroon;
+            }
+
+            #logout{
+                background-color: maroon;
+                color: white;
+                border-color:black;
+            }
+
+            #logout:hover{
+                background-color: #580d0d;
+            }
+
+            #addWish{
+                background-color: #235E6F;
+                border-color: #234C5E;
+                color: white;
+                position:fixed;
+                top: 22%;
+                left: 43%;
+                font-size: 2em;
+            }
+            #addWish:hover{
+                background-color: #235E4A;
+            }
+            #addWish:active{
+                background-color:darkcyan;
+            }
+        
+            .form-action-buttons{
+                margin:10px;
+            }
+
+            fieldset{
+                border: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to your Christmas list!</h1>
+        <button onclick="logout()" id="logout">Log out</button>
+        <p id = "output1"></p>
+        <table>
+            <tr>
+                <td>
+                    <table class="list" id="wishlist">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Image</th>
+                                <th>Comment</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <button id="addWish" onclick="addWish()">Add Wish</button><br>
+
+        <dialog id="dialogBox">
+            <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                <fieldset>
+                    <label>Item: </label>
+                    <input type="text" name="item" id="item" required>
+                </fieldset>
+                <fieldset>
+                    <label>Price: </label>
+                    <input type="text" name="price" id="price" required>
+                </fieldset>
+                <fieldset>
+                    <label>Category: </label>
+                    <select id="category" name="category" required>
+                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value= "Electronic">Electronic</option>
+                        <option value= "Clothing">Clothing</option>
+                        <option value= "Cosmetics">Cosmetics</option>
+                        <option value= "Household">Household</option>
+                        <option value= "Toys">Toys</option>
+                        <option value= "Other">Other</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label>Image: </label>
+                    <input type="file" name="img" id="image" onchange="uploadImage(this)" required>
+                </fieldset>
+                <fieldset>
+                    <label>Comment: </label>
+                    <input type="text" name="comment" id="comment" required>
+                </fieldset>
+                <div  class="form-action-buttons">
+                    <input type="submit" value="Submit">
+                    <input type="button" value="Cancel" id="cancelBut" onclick="cancelFunc()">
+                </div>
+            </form>
+        </dialog>
+
+        <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-storage.js"></script>
+
+        <script>
+            // My web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyBcgczLRrHkQDJUMbH7qHGkBu4oD3NCRIg",
+                authDomain: "project-emb.firebaseapp.com",
+                databaseURL: "https://project-emb.firebaseio.com",
+                projectId: "project-emb",
+                storageBucket: "project-emb.appspot.com",
+                messagingSenderId: "489345287054",
+                appId: "1:489345287054:web:d05f0549c6810ada4adadf",
+                measurementId: "G-DC26S8FJFZ"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+    </body>
+</html>
